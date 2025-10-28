@@ -2,138 +2,382 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Panda Token</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CriptoPanda (PND) — Bamboo Gold</title>
+  <meta name="description" content="CriptoPanda (PND) — a transparent, community-first token project with merch, investor revenue sharing, and open on-chain tracking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      background: #0d0d0d;
-      color: #fff;
+    :root{
+      --bg:#0A0D0C;
+      --bg-2:#0D100F;
+      --emerald:#03D381;
+      --emerald-2:#F3C969;
+      --text:#FFFDF6;
+      --muted:#C9C4B6;
+      --accent:#F5D37A;
+      --card:#101411CC;
+      --border:#2A2F2D;
+      --ring:#F3C969;
+      --danger:#ff7676;
+      --shadow:0 12px 36px rgba(0,0,0,.5), inset 0 0 1px rgba(255,255,255,.05);
+      --radius: 20px;
+      --blur: 14px;
+      --grad:radial-gradient(1000px 500px at 15% 10%, rgba(243,201,105,.10), transparent 60%), radial-gradient(600px 300px at 85% 20%, rgba(3,211,129,.12), transparent 60%), radial-gradient(700px 400px at 50% 100%, rgba(243,201,105,.08), transparent 60%);
+      --btn-grad:linear-gradient(135deg, #F3C969 0%, #FFEBB0 100%);
     }
-    header {
-      background: linear-gradient(135deg, #00ff99, #0066ff);
-      padding: 80px 20px;
-      text-align: center;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    header.nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(var(--blur));
+      background:linear-gradient(180deg, rgba(12,14,13,.7), rgba(12,14,13,.4));
+      border-bottom:1px solid var(--border);
     }
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.2px}
+    .brand .panda{font-size:24px;filter: drop-shadow(0 0 6px rgba(243,201,105,.55));}
+    .brand span{background: linear-gradient(90deg, #F3C969, #FFEBB0); -webkit-background-clip:text;background-clip:text;color:transparent}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{color:var(--muted);font-weight:600;font-size:14px;opacity:.9}
+    .nav-links a:hover{color:var(--text)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 18px;border-radius:14px;border:1px solid #503E19;
+      background: #171A17; color:#FFFBEF; font-weight:700;
+      box-shadow: var(--shadow);
+      transition: .25s ease;
     }
-    header p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+    .btn.primary{
+      background: var(--btn-grad);
+      color:#3A2C0A;border:1px solid #F3C969;
+      text-shadow: 0 1px 0 rgba(255,255,255,.4);
     }
-    header a {
-      background: #fff;
-      color: #000;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
+    .btn.primary:hover{transform: translateY(-2px); box-shadow: 0 10px 25px rgba(243,201,105,.28)}
+    .btn.ghost:hover{border-color:#3E4B43; transform: translateY(-1px)}
+
+    .hero{
+      position:relative; isolation:isolate; overflow:hidden;
+      padding:80px 0 40px; background-image: var(--grad);
     }
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
+    .hero-grid{display:grid;grid-template-columns: 1.2fr .8fr; gap:36px; align-items:center}
+    .badge{display:inline-flex;gap:8px;align-items:center;
+      background: rgba(243,201,105,.12); color:#FFEFC4; border:1px solid rgba(243,201,105,.3);
+      border-radius:999px; padding:8px 12px; font-size:12px; font-weight:700; letter-spacing:.3px;
+      text-transform:uppercase
     }
-    h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 2rem;
+    h1{font-size: clamp(36px, 4vw, 62px); margin:14px 0 10px; line-height:1.05; letter-spacing:-.02em}
+    .subtitle{font-size: clamp(16px, 2vw, 22px); color:#E8E0CA; font-weight:600; margin-bottom:16px}
+    .desc{color:var(--muted); font-size: clamp(14px, 1.6vw, 18px); line-height:1.6; margin-bottom:24px}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .token-strip{
+      margin-top:22px; display:flex; gap:16px; flex-wrap:wrap;
+      background: linear-gradient(180deg, rgba(18,22,20,.75), rgba(18,22,20,.55));
+      border:1px solid var(--border); border-radius:14px; padding:12px 14px; color:#F4EAD0; font-weight:700
     }
-    .tokenomics, .roadmap, .community {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    .glass{
+      background: linear-gradient(180deg, rgba(18,22,20,.65), rgba(18,22,20,.45));
+      border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+      backdrop-filter: blur(var(--blur));
     }
-    .card {
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    .hero-card{padding:22px}
+    .neon-ring{position:absolute; inset:auto auto -120px -120px; width:420px; height:420px; background: radial-gradient(closest-side, rgba(243,201,105,.18), transparent 70%); filter: blur(18px); z-index:-1}
+    .panda-logo{
+      width:100%; aspect-ratio:1/1; border-radius:24px; position:relative; overflow:hidden;
+      display:grid; place-items:center;
+      background:
+        radial-gradient(140px 140px at 70% 35%, rgba(243,201,105,.18), transparent),
+        linear-gradient(145deg, #141814, #101411);
+      border:1px solid #4A4026;
+      box-shadow: inset 0 0 40px rgba(243,201,105,.08), 0 16px 60px rgba(0,0,0,.12);
     }
-    .roadmap-step {
-      background: #111;
-      padding: 20px;
-      border-left: 5px solid #00ff99;
-      border-radius: 8px;
+    .panda-logo .icon{font-size:92px; filter: drop-shadow(0 0 12px rgba(243,201,105,.5))}
+    .panda-caption{color:#F2E6C0; font-weight:700; text-align:center; margin-top:12px}
+
+    section{padding:60px 0}
+    h2{font-size: clamp(24px, 3vw, 36px); margin:0 0 14px}
+    .section-desc{color:var(--muted); margin-bottom:22px}
+    .grid{display:grid; gap:16px}
+    .grid-3{grid-template-columns: repeat(3, 1fr)}
+    .grid-2{grid-template-columns: repeat(2, 1fr)}
+
+    .card{padding:18px}
+    .card h3{margin:0 0 8px; font-size:18px}
+    .card p{margin:0; color:#EDE3CB; line-height:1.6}
+    .tag{display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; color:#F5D37A}
+    .tag::before{content:""; width:8px; height:8px; border-radius:99px; background: var(--emerald)}
+
+    .pill{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 16px; border-radius:14px; border:1px solid #3C413D; background: linear-gradient(180deg, #151915, #101411)}
+    .pill strong{font-size:16px}
+    .pill span{color:#E9DEBF}
+
+    .list{display:grid; gap:10px}
+    .list-item{display:flex; gap:12px; align-items:flex-start}
+    .dot{width:10px; height:10px; border-radius:12px; background: var(--emerald); margin-top:6px}
+
+    .mock{display:grid; place-items:center; aspect-ratio: 16/10; border-radius:18px; border:1px solid #3C413D; background:
+      radial-gradient(400px 200px at 30% 30%, rgba(243,201,105,.16), transparent),
+      linear-gradient(145deg, #141814, #101411);
+      box-shadow: inset 0 0 60px rgba(243,201,105,.08);
+      font-weight:900; letter-spacing:.3px;
     }
-    footer {
-      background: #111;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      margin-top: 40px;
-    }
-    .social-links a {
-      color: #00ff99;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
+    .mock small{display:block; color:#EBDCA8; font-weight:700; margin-top:6px}
+
+    .calc{display:grid; gap:12px}
+    .input{display:grid; gap:6px}
+    .input input, .input select{width:100%; padding:12px 14px; border-radius:12px; border:1px solid #3A413B; background:#0F1310; color:var(--text); outline:none;}
+    .muted{color:var(--muted)}
+    .result{font-weight:800; font-size:20px}
+
+    footer{border-top:1px solid var(--border); padding:28px 0 60px; color:#CFC6B2}
+    .socials{display:flex; gap:12px; flex-wrap:wrap}
+    .soc{display:inline-flex; gap:8px; align-items:center; padding:10px 12px; border:1px solid #3A413B; border-radius:12px; background:#151915}
+    .disclaimer{font-size:12px; color:#C8BDA1}
+
+    @media (max-width: 940px){
+      .hero-grid{grid-template-columns: 1fr}
+      .grid-3{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
     }
   </style>
 </head>
 <body>
-  <header data-aos="fade-down">
-    <h1>Panda Token (PND)</h1>
-    <p>The Future of Community-Driven Crypto</p>
-    <a href="#">Buy Now</a>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="panda" aria-hidden="true">🐼</div>
+        <div><span>CriptoPanda</span> <small style="display:block;color:#F2DC9B;font-weight:700;letter-spacing:.3px">Luxury Edition</small></div>
+      </div>
+      <nav class="nav-links">
+        <a href="#roadmap">Roadmap</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#investor-card">Investor Card</a>
+        <a href="#transparency">Transparency</a>
+        <a href="#merch">Merch</a>
+        <a class="btn primary" href="#investor-card">Get Investor Card</a>
+      </nav>
+    </div>
   </header>
 
-  <section data-aos="fade-up">
-    <h2>About Panda Token</h2>
-    <p>Panda Token is a revolutionary cryptocurrency built for transparency, security, and community growth. Our mission is to empower holders with fair rewards and sustainable tokenomics.</p>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">CriptoPanda (PND) — Bamboo Gold</div>
+          <h1>CriptoPanda (PND)</h1>
+          <div class="subtitle">Safe. Strong. Transparent.</div>
+          <p class="desc">A transparent, community-first token project launching with merch, investor revenue sharing, and open on-chain tracking.</p>
+          <div class="hero-cta">
+            <a class="btn primary" href="#investor-card">Get Investor Card</a>
+            <a class="btn ghost" href="#roadmap">View Roadmap</a>
+          </div>
+          <div class="token-strip">
+            <div>🐼 <strong>Ticker:</strong> PND</div>
+            <div>⛓ <strong>Chain:</strong> BSC</div>
+            <div>🪙 <strong>Supply:</strong> 8,000,000,000</div>
+          </div>
+        </div>
 
-  <section data-aos="fade-up">
-    <h2>Tokenomics</h2>
-    <div class="tokenomics">
-      <div class="card" data-aos="fade-right">
-        <h3>Total Supply</h3>
-        <p>8,000,000,000 PND</p>
+        <div>
+          <div class="glass hero-card">
+            <div class="panda-logo" aria-label="CriptoPanda Logo">
+              <div class="icon">🐼</div>
+            </div>
+            <div class="panda-caption">Stay Strong. Stay Panda.</div>
+          </div>
+        </div>
       </div>
-      <div class="card" data-aos="fade-up">
-        <h3>Transaction Fee</h3>
-        <p>5% (2% Burn, 2% Buyback, 1% Dev)</p>
+      <div class="neon-ring" aria-hidden="true"></div>
+    </section>
+
+    <section id="roadmap">
+      <div class="container">
+        <h2>Roadmap</h2>
+        <p class="section-desc">A simple, accountable path to launch and long-term sustainability.</p>
+        <div class="grid grid-3">
+          <article class="glass card">
+            <div class="tag">Phase 1</div>
+            <h3>Foundation</h3>
+            <p>Launch website and merch store, open <strong>Investor Card</strong> program.</p>
+          </article>
+          <article class="glass card">
+            <div class="tag">Phase 2</div>
+            <h3>Fuel</h3>
+            <p>Raise <strong>€125k</strong>, deploy token, integrate liquidity and investor dashboard.</p>
+          </article>
+          <article class="glass card">
+            <div class="tag">Phase 3</div>
+            <h3>Flight</h3>
+            <p>Launch token on PancakeSwap, enable <strong>BTC fee conversions</strong>, start payouts.</p>
+          </article>
+        </div>
       </div>
-      <div class="card" data-aos="fade-left">
-        <h3>Liquidity</h3>
-        <p>Locked for 5 years</p>
+    </section>
+
+    <section id="tokenomics">
+      <div class="container">
+        <h2>Tokenomics</h2>
+        <p class="section-desc">Ultra-lean fees designed for longevity and compounding strength.</p>
+        <div class="grid grid-2">
+          <div class="glass card">
+            <div class="grid" style="gap:10px">
+              <div class="pill"><strong>Total Fee</strong><span>0.40% per transaction</span></div>
+              <div class="pill"><strong>Burn</strong><span>0.10% — deflationary pressure</span></div>
+              <div class="pill"><strong>Auto-Liquidity</strong><span>0.10% — deeper markets</span></div>
+              <div class="pill"><strong>Investor Pool</strong><span>0.10% — shared with cardholders</span></div>
+              <div class="pill"><strong>Dev Treasury</strong><span>0.10% — development & ops</span></div>
+              <div class="pill"><strong>Guardrail</strong><span>Hard capped at <b>5% max</b> total fee</span></div>
+            </div>
+          </div>
+          <div class="glass card">
+            <h3>Why so low?</h3>
+            <p>Lower friction encourages real usage and sustainable liquidity. The split aligns incentives: users enjoy efficient trading, while long-term contributors and investors benefit from steady growth.</p>
+            <p class="muted" style="margin-top:10px">Note: Exact parameters may be tuned before mainnet launch to meet compliance and security best practices.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="investor-card">
+      <div class="container">
+        <h2>CriptoPanda Investment Card</h2>
+        <p class="section-desc">
+          <strong>125 limited, numbered physical cards</strong> that grant investors a proportional share of the <strong>0.10% Investor Pool fee</strong> for <strong>10 years</strong>.
+        </p>
+        <div class="grid grid-2">
+          <div class="glass card">
+            <h3>How it works</h3>
+            <div class="list">
+              <div class="list-item"><div class="dot"></div><div>Each card represents an equal share of the 0.10% Investor Pool collected on trades.</div></div>
+              <div class="list-item"><div class="dot"></div><div>Payouts are planned to be automated via a transparent, on-chain dashboard.</div></div>
+              <div class="list-item"><div class="dot"></div><div>Revenue accrues based on real trading activity and your card count.</div></div>
+              <div class="list-item"><div class="dot"></div><div>Program length: <strong>10 years</strong> from token launch.</div></div>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap">
+              <a class="btn primary" href="#apply">Apply to Invest</a>
+              <a class="btn ghost" href="#merch">Shop Merch</a>
+            </div>
+          </div>
+          <div class="glass card">
+            <h3>ROI (Simple Simulation)</h3>
+            <p class="muted">Estimate potential returns based on hypothetical daily trading volume.</p>
+            <div class="calc">
+              <div class="input">
+                <label for="volume">Daily Trading Volume (USD)</label>
+                <input type="number" id="volume" placeholder="e.g., 1,000,000" min="0" step="1000" value="1000000"/>
+              </div>
+              <div class="input">
+                <label for="cards">Cards Owned (0–125)</label>
+                <input type="number" id="cards" placeholder="e.g., 1" min="0" max="125" step="1" value="1"/>
+              </div>
+              <p class="muted">Assumptions: Investor Pool fee is <b>0.10%</b> of volume. Each card receives <b>1/125</b> of the pool. This is a rough estimate and not financial advice.</p>
+              <div class="pill"><strong>Estimated Daily Payout</strong> <span id="payout-day">$0.00</span></div>
+              <div class="pill"><strong>Estimated Yearly Payout</strong> <span id="payout-year">$0.00</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="transparency">
+      <div class="container">
+        <h2>Transparency</h2>
+        <p class="section-desc">We operate with open books and verifiable flows.</p>
+        <div class="grid grid-3">
+          <div class="glass card">
+            <h3>Investor Pool</h3>
+            <p>Dedicated wallet to aggregate the 0.10% fee for cardholder payouts. On-chain address and dashboard will be published pre-launch.</p>
+          </div>
+          <div class="glass card">
+            <h3>Dev Treasury</h3>
+            <p>Used strictly for development, audits, infrastructure, and operations. Tracked publicly with regular reports.</p>
+          </div>
+          <div class="glass card">
+            <h3>Liquidity</h3>
+            <p>Auto-liquidity grows the pool over time for healthier markets and reduced slippage.</p>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:14px"><strong>No token sales on this site.</strong> Project still in development.</p>
+      </div>
+    </section>
+
+    <section id="merch">
+      <div class="container">
+        <h2>Merch</h2>
+        <p class="section-desc">Premium gear to rep the brand and support development.</p>
+        <div class="grid grid-2">
+          <div class="glass card">
+            <div class="mock">
+              <div>
+                <div style="text-align:center;font-size:22px">CriptoPanda Hoodie</div>
+                <div style="text-align:center;margin-top:6px">“Stay Strong. Stay Panda.”</div>
+                <small>Mockup — connect to Shopify later</small>
+              </div>
+            </div>
+          </div>
+          <div class="glass card">
+            <div class="mock">
+              <div>
+                <div style="text-align:center;font-size:22px">CriptoPanda Cap</div>
+                <div style="text-align:center;margin-top:6px">“Power of the Panda”</div>
+                <small>Mockup — connect to Shopify later</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="grid grid-2">
+        <div>
+          <div class="brand" style="margin-bottom:10px">
+            <div class="panda" aria-hidden="true">🐼</div>
+            <div><span>CriptoPanda</span></div>
+          </div>
+          <p class="disclaimer">This website is for educational and community purposes. Token not yet launched.</p>
+        </div>
+        <div class="socials">
+          <a class="soc" href="#" aria-label="Twitter / X">X/Twitter</a>
+          <a class="soc" href="#" aria-label="Telegram">Telegram</a>
+          <a class="soc" href="#" aria-label="Discord">Discord</a>
+          <a class="soc" href="#" aria-label="YouTube">YouTube</a>
+        </div>
       </div>
     </div>
-  </section>
-
-  <section>
-    <h2>Roadmap</h2>
-    <div class="roadmap">
-      <div class="roadmap-step" data-aos="fade-up">Q1: Token Launch & Community Building</div>
-      <div class="roadmap-step" data-aos="fade-up">Q2: Exchange Listings & Partnerships</div>
-      <div class="roadmap-step" data-aos="fade-up">Q3: NFT Marketplace Integration</div>
-      <div class="roadmap-step" data-aos="fade-up">Q4: Global Marketing Campaign</div>
-    </div>
-  </section>
-
-  <section data-aos="fade-up">
-    <h2>Join Our Community</h2>
-    <div class="social-links">
-      <a href="#">Telegram</a>
-      <a href="#">Twitter</a>
-      <a href="#">Discord</a>
-    </div>
-  </section>
-
-  <footer data-aos="fade-up">
-    <p>Contract Address: 0x1234567890abcdef1234567890abcdef12345678</p>
-    <p>&copy; 2025 Panda Token. All rights reserved.</p>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1000, once: true });
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id.length > 1){
+          const el = document.querySelector(id);
+          if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}) }
+        }
+      });
+    });
+
+    function formatUSD(n){ return n.toLocaleString(undefined,{style:'currency', currency:'USD', maximumFractionDigits:2}); }
+    function compute(){
+      const vol = Math.max(0, Number(document.getElementById('volume').value || 0));
+      const cards = Math.min(125, Math.max(0, Number(document.getElementById('cards').value || 0)));
+      const investorFee = 0.001;
+      const poolDay = vol * investorFee;
+      const share = (cards/125);
+      const day = poolDay * share;
+      const year = day * 365;
+      document.getElementById('payout-day').textContent = formatUSD(day);
+      document.getElementById('payout-year').textContent = formatUSD(year);
+    }
+    ['volume','cards'].forEach(id=>document.getElementById(id).addEventListener('input', compute));
+    compute();
   </script>
 </body>
 </html>
