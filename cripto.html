@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panda Token</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background: #0d0d0d;
+      color: #fff;
+    }
+    header {
+      background: linear-gradient(135deg, #00ff99, #0066ff);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    header a {
+      background: #fff;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+    .tokenomics, .roadmap, .community {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .roadmap-step {
+      background: #111;
+      padding: 20px;
+      border-left: 5px solid #00ff99;
+      border-radius: 8px;
+    }
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+    .social-links a {
+      color: #00ff99;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header data-aos="fade-down">
+    <h1>Panda Token (PND)</h1>
+    <p>The Future of Community-Driven Crypto</p>
+    <a href="#">Buy Now</a>
+  </header>
+
+  <section data-aos="fade-up">
+    <h2>About Panda Token</h2>
+    <p>Panda Token is a revolutionary cryptocurrency built for transparency, security, and community growth. Our mission is to empower holders with fair rewards and sustainable tokenomics.</p>
+  </section>
+
+  <section data-aos="fade-up">
+    <h2>Tokenomics</h2>
+    <div class="tokenomics">
+      <div class="card" data-aos="fade-right">
+        <h3>Total Supply</h3>
+        <p>8,000,000,000 PND</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>Transaction Fee</h3>
+        <p>5% (2% Burn, 2% Buyback, 1% Dev)</p>
+      </div>
+      <div class="card" data-aos="fade-left">
+        <h3>Liquidity</h3>
+        <p>Locked for 5 years</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Roadmap</h2>
+    <div class="roadmap">
+      <div class="roadmap-step" data-aos="fade-up">Q1: Token Launch & Community Building</div>
+      <div class="roadmap-step" data-aos="fade-up">Q2: Exchange Listings & Partnerships</div>
+      <div class="roadmap-step" data-aos="fade-up">Q3: NFT Marketplace Integration</div>
+      <div class="roadmap-step" data-aos="fade-up">Q4: Global Marketing Campaign</div>
+    </div>
+  </section>
+
+  <section data-aos="fade-up">
+    <h2>Join Our Community</h2>
+    <div class="social-links">
+      <a href="#">Telegram</a>
+      <a href="#">Twitter</a>
+      <a href="#">Discord</a>
+    </div>
+  </section>
+
+  <footer data-aos="fade-up">
+    <p>Contract Address: 0x1234567890abcdef1234567890abcdef12345678</p>
+    <p>&copy; 2025 Panda Token. All rights reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
+</body>
+</html>
